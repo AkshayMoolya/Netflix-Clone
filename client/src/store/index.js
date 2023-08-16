@@ -87,7 +87,7 @@ export const getUserLikedMovies = createAsyncThunk(
   async (email) => {
     const {
       data: { movies },
-    } = await axios.get(`https://mushy-bear-crown.cyclic.cloud/api/user/liked/${email}`);
+    } = await axios.get(`https://relieved-smock.cyclic.cloud/api/user/liked/${email}`);
     return movies;
   }
 );
@@ -96,7 +96,7 @@ export const removeFromLikedMovies = createAsyncThunk(
   async ({ email, movieId }) => {
     const {
       data: { movies },
-    } = await axios.put(`https://mushy-bear-crown.cyclic.cloud/api/user/delete`, {
+    } = await axios.put(`https://relieved-smock.cyclic.cloud/api/user/delete`, {
       email,
       movieId,
     });

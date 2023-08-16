@@ -31,7 +31,7 @@ const Card = React.memo(({ movieData, isLiked }) => {
 
   const addToList = async () => {
     try {
-      const res = await axios.post("https://mushy-bear-crown.cyclic.cloud/api/user/add", {
+      const res = await axios.post("https://relieved-smock.cyclic.cloud/api/user/add", {
         email,
         data: movieData,
       });
