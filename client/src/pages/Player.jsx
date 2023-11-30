@@ -1,23 +1,41 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
+import { useParams } from "react-router-dom";
+import ReactPlayer from "react-player";
+
 const Player = () => {
+  const { id } = useParams();
+  const [video, setVideo] = useState("");
+
+  const getvideo = async () => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_TMDB_BASE_URL}/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+    setVideo(data.results[0]?.key);
+  };
+
+  useEffect(() => {
+    getvideo();
+  }, []);
+
   return (
     <div>
       <div className="player w-screen h-screen">
         <div className="back absolute p-8 z-10">
           <BsArrowLeft
             className="text-5xl"
-            onClick={() => (window.location.href = -1)}
+            onClick={() => (window.location.href = "/")}
           />
         </div>
-        <video
-          className="h-full w-full object-cover"
-          src=""
-          autoPlay
-          loop
+        <ReactPlayer
+          url={`https://www.youtube.com/watch?v=${video}`}
           controls
-          muted
-        ></video>
+          width="100%"
+          height="100%"
+          style={{ backgroundColor: "#000000" }}
+          playing={true}
+        />
       </div>
     </div>
   );

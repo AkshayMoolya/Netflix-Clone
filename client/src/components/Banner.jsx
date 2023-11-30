@@ -15,6 +15,8 @@ const Banner = React.memo(() => {
     getData();
   }, []);
 
+  console.log(data);
+
   const getData = async () => {
     const {
       data: { results },
@@ -48,7 +50,7 @@ const Banner = React.memo(() => {
         </div>
         <div className="buttons flex ml-6 my-4 sm:my-8 sm:gap-8 gap-4">
           <button
-            onClick={() => (window.location.href = "/splash")}
+            onClick={() => (window.location.href = `player/${data?.id}`)}
             className="flex justify-center bg-[#e50914]/90 px-2 py-1 sm:px-4 sm:py-3 text-gray-200 items-center text-sm sm:text-lg font-semibold sm:gap-4 gap-1 rounded-md p-2 sm:pl-8 sm:pr-10 border-none transition duration-300 ease-in-out hover:opacity-80"
           >
             <FaPlay /> Play

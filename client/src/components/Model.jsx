@@ -9,7 +9,6 @@ const Modal = () => {
   const dispatch = useDispatch();
 
   const modalData = useSelector((state) => state.model.modelData);
-  
 
   return (
     <div>
@@ -38,7 +37,12 @@ const Modal = () => {
                 <RiCloseCircleLine />
               </div>
               <div className="left-5 flex items-center space-x-3 text-white bottom-5 absolute ">
-                <div className=" active:scale-95 cursor-pointer  bg-[#d41420]  text-white p-3 rounded-md font-semibold   ">
+                <div
+                  className=" active:scale-95 cursor-pointer  bg-[#d41420]  text-white p-3 rounded-md font-semibold "
+                  onClick={() =>
+                    (window.location.href = `/player/${modalData?.id}`)
+                  }
+                >
                   Watch now
                 </div>
                 {/* <IoAddCircleOutline

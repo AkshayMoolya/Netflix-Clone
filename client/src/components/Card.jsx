@@ -31,10 +31,13 @@ const Card = React.memo(({ movieData, isLiked }) => {
 
   const addToList = async () => {
     try {
-      const res = await axios.post("https://relieved-smock.cyclic.cloud/api/user/add", {
-        email,
-        data: movieData,
-      });
+      const res = await axios.post(
+        "https://relieved-smock.cyclic.cloud/api/user/add",
+        {
+          email,
+          data: movieData,
+        }
+      );
       if (res.status === 200) {
         toast.success("Movie added sucessfully", {
           position: "top-center",
@@ -77,15 +80,14 @@ const Card = React.memo(({ movieData, isLiked }) => {
                 onError={() => setImageError(true)}
                 src={imageError ? fallBackSrc : src}
                 alt="movie"
-                onClick={() => (window.location.href = "/player")}
               />
-              <video
+              {/* <video
                 className="w-full h-[140px] object-cover rounded-md top-0 z-[5] absolute"
                 src={""}
                 autoPlay
                 loop
                 onClick={() => (window.location.href = "/player")}
-              />
+              /> */}
             </div>
             <div className="info-container flex flex-col p-4 gap-2">
               <h3
@@ -99,7 +101,9 @@ const Card = React.memo(({ movieData, isLiked }) => {
                   <IoPlayCircleSharp
                     className="text-2xl cursor-pointer transition-[0.3s] duration-300 ease-in-out hover:text-[#b8b8b8]"
                     title="play"
-                    onClick={() => (window.location.href = "/player")}
+                    onClick={() =>
+                      (window.location.href = `/player/${movieData.id}`)
+                    }
                   />
                   <RiThumbUpFill
                     className="text-2xl cursor-pointer transition-[0.3s] duration-300 ease-in-out hover:text-[#b8b8b8]"
